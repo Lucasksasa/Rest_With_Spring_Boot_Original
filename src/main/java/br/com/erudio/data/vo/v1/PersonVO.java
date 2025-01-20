@@ -2,14 +2,29 @@ package br.com.erudio.data.vo.v1;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty; //(@JsonProperty)
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder; //(@JsonPropertyOrder)
+
+
+
+@JsonPropertyOrder({"id","address","first_Name","last_Name","gender"}) //serve para mudar as ordens pra como eu quiser
 public class PersonVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	
 	private Long id;
+	
+	@JsonProperty("first_Name") //Serve para mudar o nome de algum atributo, aqui adicionamos o "_".
 	private String firstName;
+	
+	@JsonProperty("last_Name")
 	private String lastName;
 	private String address;
+	
+	@JsonIgnore //Serve para omitir um atributo. Nesse caso escondemos o "gender"
 	private String gender;
 	
 	public PersonVO() {}
